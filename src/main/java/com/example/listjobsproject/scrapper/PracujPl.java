@@ -1,10 +1,20 @@
 package com.example.listjobsproject.scrapper;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
 public class PracujPl implements Runnable{
     @Override
     public void run() {
-        for (int i = 0; i < 100; i++) {
-            System.out.println("To jest klasa: "+getClass()+" a watek: "+Thread.currentThread().getId()+" a liczba to: "+i);
-        }
+
+//        try
+//        {
+////            Document doc = Jsoup.connect("http://pracuj.com").get();
+//
+//        }
+//        catch(IOException e){
+//        }
     }
 }
