@@ -1,7 +1,9 @@
 package com.example.listjobsproject.validators;
 
 import com.example.listjobsproject.models.PageScrapper;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Component;
+
 
 import java.math.BigDecimal;
 
@@ -15,8 +17,8 @@ public class DataValidator {
     {
         if(isValidStrings(title,url,company,salary) && isValidSalary(salary))
         {
+            //obiekt gotowy do obslugi
           PageScrapper a  = pageMapper(title,url,company,new BigDecimal(salary));
-            System.out.println(a.toString());
         }
     }
 
@@ -31,15 +33,10 @@ public class DataValidator {
         return true;
     }
 
+
     private boolean isValidSalary(String salary)
-    {
-        try {
-            BigDecimal bigDecimal = new BigDecimal(salary);
-            return true;
-        }
-        catch (NumberFormatException e){
-            return false;
-        }
+    {   //zewnetrzna bibloteka do sprawdzenia czy mozna z tego stringa stworzyc liczbe
+        return NumberUtils.isCreatable(salary);
     }
 
 

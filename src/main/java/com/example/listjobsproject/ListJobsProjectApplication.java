@@ -39,7 +39,6 @@ public class ListJobsProjectApplication implements CommandLineRunner {
 //			object.start();
 //		}
 
-		dataValidator.Validate("Junior h","http/","januszek","4333.0");
 
 	}
 }
