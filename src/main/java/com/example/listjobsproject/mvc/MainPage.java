@@ -1,10 +1,10 @@
-package com.example.listjobsproject;
+package com.example.listjobsproject.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Mvc {
+public class MainPage {
 
 
 

@@ -1,17 +1,10 @@
 package com.example.listjobsproject;
 
-import com.example.listjobsproject.models.PageScrapper;
-import com.example.listjobsproject.scrapper.NoFluffJobs;
-import com.example.listjobsproject.scrapper.PracujPl;
-import com.example.listjobsproject.validators.DataValidator;
+import com.example.listjobsproject.dataValidityVerifier.DataValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class ListJobsProjectApplication implements CommandLineRunner {

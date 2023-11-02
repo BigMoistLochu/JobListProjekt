@@ -2,20 +2,20 @@ package com.example.listjobsproject.models;
 
 import java.math.BigDecimal;
 
-public class PageScrapper {
+public class PageJobDto {
 
     private String title;
     private String url;
     private BigDecimal salary;
     private String company;
 
-    public PageScrapper(String title, String url, BigDecimal salary) {
+    public PageJobDto(String title, String url, BigDecimal salary) {
         this.title = title;
         this.url = url;
         this.salary = salary;
     }
 
-    public PageScrapper(String title, String url, BigDecimal salary, String company) {
+    public PageJobDto(String title, String url, BigDecimal salary, String company) {
         this.title = title;
         this.url = url;
         this.salary = salary;
@@ -94,8 +94,8 @@ public class PageScrapper {
             return this;
         }
 
-        public PageScrapper build(){
-            return new PageScrapper(title,url,salary,company);
+        public PageJobDto build(){
+            return new PageJobDto(title,url,salary,company);
         }
     }
 
