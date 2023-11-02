@@ -15,8 +15,8 @@ public class NoFluffJobs implements Runnable{
         try
         {
             Document doc = Jsoup.connect("https://nofluffjobs.com/pl/Java?page=1&criteria=seniority%3Djunior").get();
-            String s = doc.select("#nfjPostingListItem-junior-java-developer-bersi-Bydgoszcz").attr("href");
-
+            String s = doc.select("#nfjPostingListItem-junior-java-developer-bersi-Bydgoszczds").attr("href");
+            System.out.println(s);
         }
         catch(IOException e){
             System.out.println("blad sciagania z ...(podaj strone), potem to bedzie log");
