@@ -7,7 +7,7 @@ public class PageScrapper {
     private String title;
     private String url;
     private BigDecimal salary;
-    private String companyName;
+    private String company;
 
     public PageScrapper(String title, String url, BigDecimal salary) {
         this.title = title;
@@ -15,11 +15,11 @@ public class PageScrapper {
         this.salary = salary;
     }
 
-    public PageScrapper(String title, String url, BigDecimal salary, String companyName) {
+    public PageScrapper(String title, String url, BigDecimal salary, String company) {
         this.title = title;
         this.url = url;
         this.salary = salary;
-        this.companyName = companyName;
+        this.company = company;
     }
 
     public String getTitle() {
@@ -46,13 +46,64 @@ public class PageScrapper {
         this.salary = salary;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompany() {
+        return company;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompany(String company) {
+        this.company = company;
     }
+
+    @Override
+    public String toString() {
+        return "PageScrapper{" +
+                "title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", salary=" + salary +
+                ", company='" + company + '\'' +
+                '}';
+    }
+
+
+    //KLASA BUILDER!!
+    public static class PageScrapperBuilder
+    {
+        private String title;
+        private String url;
+        private BigDecimal salary;
+        private String company;
+
+
+        public PageScrapperBuilder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public PageScrapperBuilder url(String url) {
+            this.url = url;
+            return this;
+        }
+
+        public PageScrapperBuilder salary(BigDecimal salary) {
+            this.salary = salary;
+            return this;
+        }
+
+        public PageScrapperBuilder company(String company) {
+            this.company = company;
+            return this;
+        }
+
+        public PageScrapper build(){
+            return new PageScrapper(title,url,salary,company);
+        }
+    }
+
+
+
+
+
+
 
 
 
