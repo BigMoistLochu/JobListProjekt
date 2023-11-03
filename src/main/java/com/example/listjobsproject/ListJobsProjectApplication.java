@@ -1,10 +1,15 @@
 package com.example.listjobsproject;
 
 import com.example.listjobsproject.dataValidityVerifier.DataValidator;
+import com.example.listjobsproject.scrapper.NoFluffJobs;
+import com.example.listjobsproject.scrapper.PracujPl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ListJobsProjectApplication implements CommandLineRunner {
@@ -24,13 +29,13 @@ public class ListJobsProjectApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		//wystarczy miec klasy ktore implementuja Runnable
 		//potem te klasy wpadaja do kotla, z kotl
-//		List<Runnable> listOfClass = new ArrayList<>(List.of(new NoFluffJobs(),new PracujPl()));
-//
-//		for (Runnable klasa:listOfClass)
-//		{
-//			Thread object = new Thread(klasa);
-//			object.start();
-//		}
+		List<Runnable> listOfClass = new ArrayList<>(List.of(new NoFluffJobs(),new PracujPl()));
+
+		for (Runnable klasa:listOfClass)
+		{
+			Thread object = new Thread(klasa);
+			object.start();
+		}
 
 
 	}
