@@ -23,6 +23,10 @@ public class PageJobService {
         return pageJobRepository.findAll();
     }
 
+    public void savePageJob(PageJob pageJob){
+        pageJobRepository.save(pageJob);
+    }
+
 
 
 }

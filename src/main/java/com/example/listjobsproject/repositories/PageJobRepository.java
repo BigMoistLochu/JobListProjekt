@@ -12,6 +12,4 @@ public interface PageJobRepository extends CrudRepository<PageJob,Long> {
     List<PageJob> findAll();
 
 
-
-
 }
