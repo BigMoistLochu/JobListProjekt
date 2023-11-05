@@ -1,14 +1,20 @@
 package com.example.listjobsproject.scrapper;
 
 
+import com.example.listjobsproject.NewFiczer.DataExtractorService;
+import com.example.listjobsproject.NewFiczer.EventListener;
+import com.example.listjobsproject.NewFiczer.ThreadState;
 import com.example.listjobsproject.dataValidityVerifier.DataValidator;
 import com.example.listjobsproject.models.PageJobDto;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracujPl implements Runnable{
+public class PracujPl implements Runnable, EventListener {
 
 
     DataValidator dataValidator;
@@ -20,28 +26,34 @@ public class PracujPl implements Runnable{
     @Override
     public void run() {
 
-//        try
-//        {
-//            Document doc = Jsoup.connect("http://pracuj.com").get();
-//
-        List<PageJobDto> listOfNoobs = new ArrayList<>(List.of(new PageJobDto("pracuje0","xd2",new BigDecimal("4334"),"xd3"),
+        try
+        {
+            Document doc = Jsoup.connect("http://pracuj.com").get();
+            List<PageJobDto> listOfNoobs = new ArrayList<>(List.of(new PageJobDto("pracuje0","xd2",new BigDecimal("4334"),"xd3"),
                 new PageJobDto("pracuje1","xd2",new BigDecimal("4334"),"xd3"),
                 new PageJobDto("pracuje2","xd2",new BigDecimal("4334"),"xd3"),
                 new PageJobDto("pracuje3","xd2",new BigDecimal("4334"),"xd3"),
                 new PageJobDto("pracuje4","xd2",new BigDecimal("4334"),"xd3")
-        ));
+            ));
 
-        listOfNoobs.stream().forEach(
+            listOfNoobs.stream().forEach(
                 noob -> dataValidator.Validate(noob.getTitle()
                         ,noob.getUrl()
                         ,noob.getCompany(),"4323")
-        );
+            );
 
+        }
+        catch(IOException e){
+            System.out.println("blad sciagania z ...(podaj strone), potem to bedzie log");
+        }
+        finally {
+            System.out.println("Watek wywoluje metode endOfWork z klasy pracujePL");
+            threadEndOfWork(this.getClass().getSimpleName(),ThreadState.DONE);
+        }
+    }
 
-//
-//        }
-//        catch(IOException e){
-//            System.out.println("blad sciagania z ...(podaj strone), potem to bedzie log");
-//        }
+    @Override
+    public void threadEndOfWork(String threadName, ThreadState state) {
+        DataExtractorService.giveNotification(threadName,state);
     }
 }

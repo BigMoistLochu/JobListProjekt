@@ -2,6 +2,7 @@ package com.example.listjobsproject.scrapper;
 
 import com.example.listjobsproject.NewFiczer.EventListener;
 import com.example.listjobsproject.NewFiczer.DataExtractorService;
+import com.example.listjobsproject.NewFiczer.ThreadState;
 import com.example.listjobsproject.dataValidityVerifier.DataValidator;
 import com.example.listjobsproject.models.PageJobDto;
 import org.jsoup.Jsoup;
@@ -47,21 +48,20 @@ public class NoFluffJobs implements Runnable, EventListener {
             );
 
 
-            //jesli skonczy robote poinformuj klase o skonczeniu ale jak?
 
         }
         catch(IOException e){
             System.out.println("blad sciagania z ...(podaj strone), potem to bedzie log");
         }
         finally {
-            System.out.println("Watek wywoluje metode endOfWork");
-            threadEndOfWork();
+            System.out.println("Watek wywoluje metode endOfWork no fluff");
+            threadEndOfWork(this.getClass().getSimpleName(),ThreadState.DONE);
         }
 
     }
 
     @Override
-    public void threadEndOfWork() {
-        DataExtractorService.giveNotification(getClass().getName(),true);
+    public void threadEndOfWork(String thread,ThreadState state) {
+        DataExtractorService.giveNotification(thread,state);
     }
 }

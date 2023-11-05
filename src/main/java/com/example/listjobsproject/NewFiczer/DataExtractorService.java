@@ -14,7 +14,7 @@ public class DataExtractorService {
         this.dataExtractor = dataExtractor;
     }
 
-    public static void giveNotification(String threadName,boolean state)
+    public static void giveNotification(String threadName,ThreadState state)
     {
         dataExtractor.getNotification(threadName,state);
     }
