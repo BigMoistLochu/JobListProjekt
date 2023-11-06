@@ -27,6 +27,11 @@ public class PageJobService {
         pageJobRepository.save(pageJob);
     }
 
+    public void saveAllPageJob(List<PageJob> pageJobList)
+    {
+        pageJobRepository.saveAll(pageJobList);
+    }
+
 
 
 }

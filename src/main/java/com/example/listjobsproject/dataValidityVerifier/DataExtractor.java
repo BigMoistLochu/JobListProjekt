@@ -6,8 +6,6 @@ import com.example.listjobsproject.models.PageJobDto;
 import com.example.listjobsproject.services.PageJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,13 +47,14 @@ public final class DataExtractor {
     {
         if(checkAllStateIsTrue())
         {
-            pageJobDtoList.stream().map(pageJobDto -> new PageJob(
+           List<PageJob> pageJobList =  pageJobDtoList.stream().map(pageJobDto -> new PageJob(
                     pageJobDto.getTitle()
                     ,pageJobDto.getUrl(),
                     pageJobDto.getSalary()
                     ,pageJobDto.getCompany()
-            ))
-                    .forEach(pageJob -> pageJobService.savePageJob(pageJob));
+            )).toList();
+
+           pageJobService.saveAllPageJob(pageJobList);
         }
     }
 
