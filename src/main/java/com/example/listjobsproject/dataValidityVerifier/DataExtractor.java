@@ -28,9 +28,9 @@ public final class DataExtractor {
         this.pageJobService = pageJobService;
     }
 
-    public void addToTheList(PageJobDto dto)
+    public synchronized void addJobDtoToTheList(PageJobDto pageJobDtodto)
     {
-        pageJobDtoList.add(dto);
+        pageJobDtoList.add(pageJobDtodto);
     }
 
     public void getNotification(String threadName,ThreadState state)
@@ -53,7 +53,7 @@ public final class DataExtractor {
                     pageJobDto.getSalary()
                     ,pageJobDto.getCompany()
             )).toList();
-
+           System.out.println("wrzucam cala liste bo wszystkie watki skonczyly prace");
            pageJobService.saveAllPageJob(pageJobList);
         }
     }

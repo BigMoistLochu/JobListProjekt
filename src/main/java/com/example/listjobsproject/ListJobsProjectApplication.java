@@ -36,6 +36,7 @@ public class ListJobsProjectApplication implements CommandLineRunner {
 			Thread object = new Thread(klasa);
 			object.start();
 		}
+		
 
 		System.out.println("Odpalam Program");
 

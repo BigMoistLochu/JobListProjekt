@@ -24,7 +24,7 @@ public final class DataValidator {
         if(isValidStrings(title,url,company,salary) && isValidSalary(salary))
         {
           PageJobDto a  = pageMapper(title,url,company,new BigDecimal(salary));
-          dataExtractor.addToTheList(a);
+          dataExtractor.addJobDtoToTheList(a);
         }
     }
 
