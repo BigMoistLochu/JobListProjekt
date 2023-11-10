@@ -4,6 +4,8 @@ import com.example.listjobsproject.NewFiczer.ThreadState;
 import com.example.listjobsproject.models.PageJob;
 import com.example.listjobsproject.models.PageJobDto;
 import com.example.listjobsproject.services.PageJobService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public final class DataExtractor {
     private int NUMBER_OF_THREAD = 0;
 
     private PageJobService pageJobService;
+    private static final Logger logger = LogManager.getLogger(DataExtractor.class);
 
     @Autowired
     public DataExtractor(PageJobService pageJobService) {
@@ -53,8 +56,8 @@ public final class DataExtractor {
                     pageJobDto.getSalary()
                     ,pageJobDto.getCompany()
             )).toList();
-           System.out.println("wrzucam cala liste bo wszystkie watki skonczyly prace");
            pageJobService.saveAllPageJob(pageJobList);
+           logger.info("List Of All Object from DataExtractor was dropped into a DataBase!");
         }
     }
 

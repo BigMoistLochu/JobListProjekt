@@ -8,6 +8,8 @@ import com.example.listjobsproject.dataValidityVerifier.DataValidator;
 import com.example.listjobsproject.models.PageJobDto;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -18,7 +20,7 @@ public class PracujPl implements Runnable, EventListener {
 
 
     DataValidator dataValidator;
-
+    private static final Logger logger = LogManager.getLogger(PracujPl.class);
     public PracujPl(DataValidator dataValidator) {
         this.dataValidator = dataValidator;
     }
@@ -44,10 +46,10 @@ public class PracujPl implements Runnable, EventListener {
 
         }
         catch(IOException e){
-            System.out.println("blad sciagania z ...(podaj strone), potem to bedzie log");
+            logger.error(e);
         }
         finally {
-            System.out.println("Watek wywoluje metode endOfWork z klasy pracujePL");
+            logger.info("Klasa: "+PracujPl.class+" Skonczyla prace!");
             threadEndOfWork(this.getClass().getSimpleName(),ThreadState.DONE);
         }
     }

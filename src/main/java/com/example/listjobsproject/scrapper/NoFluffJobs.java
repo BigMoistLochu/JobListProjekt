@@ -5,6 +5,8 @@ import com.example.listjobsproject.NewFiczer.DataExtractorService;
 import com.example.listjobsproject.NewFiczer.ThreadState;
 import com.example.listjobsproject.dataValidityVerifier.DataValidator;
 import com.example.listjobsproject.models.PageJobDto;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -19,7 +21,8 @@ public class NoFluffJobs implements Runnable, EventListener {
 
     private final String URL = "https://nofluffjobs.com/pl/Java?page=1&criteria=seniority%3Djunior";
 
-    DataValidator dataValidator;
+    private DataValidator dataValidator;
+    private static final Logger logger = LogManager.getLogger(NoFluffJobs.class);
 
 
     public NoFluffJobs(DataValidator dataValidator) {
@@ -47,14 +50,12 @@ public class NoFluffJobs implements Runnable, EventListener {
                             ,noob.getCompany(),"4323")
             );
 
-
-
         }
-        catch(IOException e){
-            System.out.println("blad sciagania z ...(podaj strone), potem to bedzie log");
+        catch(IOException | IllegalArgumentException e){
+            logger.error(e);
         }
         finally {
-            System.out.println("Watek wywoluje metode endOfWork no fluff");
+            logger.info("Klasa: "+NoFluffJobs.class+" Skonczyla prace!");
             threadEndOfWork(this.getClass().getSimpleName(),ThreadState.DONE);
         }
 

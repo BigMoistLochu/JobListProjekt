@@ -27,8 +27,7 @@ public class ListJobsProjectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//wystarczy miec klasy ktore implementuja Runnable
-		//potem te klasy wpadaja do kotla, z kotl
+
 		List<Runnable> listOfClass = new ArrayList<>(List.of(new NoFluffJobs(dataValidator),new PracujPl(dataValidator)));
 
 		for (Runnable klasa:listOfClass)
@@ -36,7 +35,7 @@ public class ListJobsProjectApplication implements CommandLineRunner {
 			Thread object = new Thread(klasa);
 			object.start();
 		}
-		
+
 
 		System.out.println("Odpalam Program");
 
