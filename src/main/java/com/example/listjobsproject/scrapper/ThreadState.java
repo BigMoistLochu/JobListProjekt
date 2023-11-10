@@ -1,4 +1,4 @@
-package com.example.listjobsproject.NewFiczer;
+package com.example.listjobsproject.scrapper;
 
 public enum ThreadState {
     DONE,

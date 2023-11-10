@@ -1,6 +1,6 @@
 package com.example.listjobsproject.dataValidityVerifier;
 
-import com.example.listjobsproject.NewFiczer.ThreadState;
+import com.example.listjobsproject.scrapper.ThreadState;
 import com.example.listjobsproject.models.PageJob;
 import com.example.listjobsproject.models.PageJobDto;
 import com.example.listjobsproject.services.PageJobService;

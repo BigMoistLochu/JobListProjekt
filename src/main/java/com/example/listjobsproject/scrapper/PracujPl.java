@@ -1,9 +1,7 @@
 package com.example.listjobsproject.scrapper;
 
 
-import com.example.listjobsproject.NewFiczer.DataExtractorService;
-import com.example.listjobsproject.NewFiczer.EventListener;
-import com.example.listjobsproject.NewFiczer.ThreadState;
+import com.example.listjobsproject.services.DataExtractorService;
 import com.example.listjobsproject.dataValidityVerifier.DataValidator;
 import com.example.listjobsproject.models.PageJobDto;
 import org.jsoup.Jsoup;

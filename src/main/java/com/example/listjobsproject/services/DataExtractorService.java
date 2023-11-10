@@ -1,5 +1,6 @@
-package com.example.listjobsproject.NewFiczer;
+package com.example.listjobsproject.services;
 
+import com.example.listjobsproject.scrapper.ThreadState;
 import com.example.listjobsproject.dataValidityVerifier.DataExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class DataExtractorService {
         this.dataExtractor = dataExtractor;
     }
 
-    public static void giveNotification(String threadName,ThreadState state)
+    public static void giveNotification(String threadName, ThreadState state)
     {
         dataExtractor.getNotification(threadName,state);
     }
